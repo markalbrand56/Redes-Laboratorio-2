@@ -3,7 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	res := HammingDecode("1100001") // Original: 0110011
+
+	fmt.Println("Ingrese un mensaje en binario:")
+	var message string
+	fmt.Scanln(&message)
+
+	res := HammingDecode(message)
 
 	fmt.Println("Resultado: ", res)
 }
