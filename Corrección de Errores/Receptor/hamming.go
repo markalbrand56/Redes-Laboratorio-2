@@ -19,7 +19,7 @@ func HammingDecode(message string) string {
 	for i, j := 0, len(messageBits)-1; i < j; i, j = i+1, j-1 {
 		messageBits[i], messageBits[j] = messageBits[j], messageBits[i]
 	}
-	fmt.Println("Reversed message: ", messageBits)
+	// fmt.Println("Reversed message: ", messageBits)
 
 	// Calcular cuantos bits de paridad hay en el mensaje
 	parityBits := 0
@@ -56,19 +56,24 @@ func HammingDecode(message string) string {
 		fmt.Println("No errors found")
 	}
 
-	// Se invierte nuevamente el mensaje para devolverlo en el orden original
-	for i, j := 0, len(messageBits)-1; i < j; i, j = i+1, j-1 {
-		messageBits[i], messageBits[j] = messageBits[j], messageBits[i]
-	}
-	fmt.Println("Corrected message: ", messageBits)
-
-	// Se eliminan los bits de paridad y devolver en string el mensaje original
-	decodedMessage := ""
+	// Eliminar los bits de paridad del mensaje, para regresar el mensaje original
+	decodedMessage := make([]int, 0)
 	for i := 0; i < len(messageBits); i++ {
-		if i&(i-1) == 0 {
-			decodedMessage += strconv.Itoa(messageBits[i])
+		if i&(i+1) != 0 {
+			decodedMessage = append(decodedMessage, messageBits[i])
 		}
 	}
 
-	return decodedMessage
+	// Regresar el mensaje a su orden original
+	for i, j := 0, len(decodedMessage)-1; i < j; i, j = i+1, j-1 {
+		decodedMessage[i], decodedMessage[j] = decodedMessage[j], decodedMessage[i]
+	}
+
+	// Convertir el mensaje a string
+	decoded := ""
+	for _, bit := range decodedMessage {
+		decoded += strconv.Itoa(bit)
+	}
+
+	return decoded
 }
