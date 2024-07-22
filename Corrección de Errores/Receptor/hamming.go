@@ -27,20 +27,19 @@ func HammingDecode(message string) string {
 		if i&(i-1) == 0 {
 			parityBits++
 		}
-
 	}
 	fmt.Println("Parity bits: ", parityBits)
 
 	// Verificar si hay errores en el mensaje en base a los bits de paridad
 	errorPosition := 0
 	for i := 0; i < parityBits; i++ {
-		position := int(1 << uint(i)) // 2^i
+		position := 1 << uint(i) // 2^i
 		parity := 0
 
 		// Calcular el bit de paridad para la posición actual
-		for j := int(position); j < int(len(messageBits)); j += 2 * position {
-			for k := j; k < j+position && k < int(len(messageBits)); k++ {
-				parity ^= messageBits[int(k)]
+		for j := position - 1; j < len(messageBits); j += 2 * position {
+			for k := j; k < j+position && k < len(messageBits); k++ {
+				parity ^= messageBits[k]
 			}
 		}
 
@@ -51,7 +50,7 @@ func HammingDecode(message string) string {
 	}
 
 	if errorPosition != 0 {
-		fmt.Println("Error in position: ", errorPosition+1)
+		fmt.Println("Error in position: ", errorPosition)
 		messageBits[errorPosition-1] ^= 1
 	} else {
 		fmt.Println("No errors found")
@@ -61,6 +60,7 @@ func HammingDecode(message string) string {
 	for i, j := 0, len(messageBits)-1; i < j; i, j = i+1, j-1 {
 		messageBits[i], messageBits[j] = messageBits[j], messageBits[i]
 	}
+	fmt.Println("Corrected message: ", messageBits)
 
 	// Se eliminan los bits de paridad y devolver en string el mensaje original
 	decodedMessage := ""
