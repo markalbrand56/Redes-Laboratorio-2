@@ -4,7 +4,7 @@
 
 ### Emisor (Python)
 
-El emisor para el algoritmo de Hamming (n, m) se encarga de calcular los bits de paridad necesarios para una cadena binaria de cualquier tamaño, y 
+El emisor para el algoritmo de Hamming (n, m) se encarga de calcular los bits de paridad necesarios para una cadena binaria de cualquier tamaño, y
 retornar la cadena con los bits de paridad calculados.
 
 Para ejecutar el emisor, se debe ejecutar el siguiente comando:
