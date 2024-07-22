@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -42,6 +43,7 @@ func TestHammingDecode(t *testing.T) {
 	for _, test := range fails {
 		t.Run(test.input, func(t *testing.T) {
 			decoded := HammingDecode(test.input)
+			fmt.Println("Decoded: ", decoded)
 			if decoded == test.output {
 				t.Errorf("For message %s, expected to fail but got %s", test.input, decoded)
 			}

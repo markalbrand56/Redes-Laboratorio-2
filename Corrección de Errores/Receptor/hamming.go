@@ -6,14 +6,11 @@ import (
 )
 
 func HammingDecode(message string) string {
-	fmt.Println("Decoding message with Hamming code")
-
 	// Pasar el mensaje original a un array de enteros
 	messageBits := make([]int, len(message))
 	for i, char := range message {
 		messageBits[i], _ = strconv.Atoi(string(char))
 	}
-	fmt.Println("Message: ", messageBits)
 
 	// Para trabajar con el mensaje, se invierte el orden de los bits
 	for i, j := 0, len(messageBits)-1; i < j; i, j = i+1, j-1 {
@@ -28,7 +25,7 @@ func HammingDecode(message string) string {
 			parityBits++
 		}
 	}
-	fmt.Println("Parity bits: ", parityBits)
+	fmt.Printf("\tMessage '%s' has %d parity bits\n", message, parityBits)
 
 	// Verificar si hay errores en el mensaje en base a los bits de paridad
 	errorPosition := 0
@@ -50,10 +47,10 @@ func HammingDecode(message string) string {
 	}
 
 	if errorPosition != 0 {
-		fmt.Println("Error in position: ", errorPosition)
+		fmt.Println("\tError in position: ", errorPosition)
 		messageBits[errorPosition-1] ^= 1
 	} else {
-		fmt.Println("No errors found")
+		fmt.Println("\tNo errors found")
 	}
 
 	// Eliminar los bits de paridad del mensaje, para regresar el mensaje original
