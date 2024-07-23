@@ -4,9 +4,9 @@ import (
 	"fmt"
 )
 
-const poly uint32 = 0xEDB88320
+const poly uint32 = 0xEDB88320 // Polinomio CRC-32
 
-// Tabla CRC-32
+// Tabla CRC-32 para cálculos rápidos
 func MakeCrcTable() [256]uint32 {
 	var table [256]uint32
 	for i := 0; i < 256; i++ {

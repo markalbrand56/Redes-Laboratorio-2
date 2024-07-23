@@ -1,4 +1,7 @@
 def make_crc_table():
+    """
+    Crea una tabla de 256 elementos con los valores de CRC-32.
+    """
     poly = 0xEDB88320
     table = []
     for i in range(256):
@@ -12,11 +15,14 @@ def make_crc_table():
     return table
 
 def crc32_check(data, checksum):
+    """
+    Verifica si el checksum recibido es correcto.
+    """
     table = make_crc_table()
     crc = 0xFFFFFFFF
     for byte in data:
-        crc = table[(crc ^ ord(byte)) & 0xFF] ^ (crc >> 8)
-    crc ^= 0xFFFFFFFF
+        crc = table[(crc ^ ord(byte)) & 0xFF] ^ (crc >> 8) 
+    crc ^= 0xFFFFFFFF 
     return format(crc, '032b') == checksum
 
 message = input("Ingrese un mensaje en binario: ")
