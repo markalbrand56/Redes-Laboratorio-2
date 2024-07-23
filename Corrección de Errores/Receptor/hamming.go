@@ -48,7 +48,12 @@ func HammingDecode(message string) string {
 
 	if errorPosition != 0 {
 		fmt.Println("\tError in position: ", errorPosition)
-		messageBits[errorPosition-1] ^= 1
+
+		if errorPosition-1 < len(messageBits) {
+			messageBits[errorPosition-1] ^= 1
+		} else {
+			fmt.Println("\tError in parity bits, can't correct")
+		}
 	} else {
 		fmt.Println("\tNo errors found")
 	}
