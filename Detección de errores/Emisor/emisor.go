@@ -6,6 +6,8 @@ import (
 
 const poly uint32 = 0xEDB88320 // Polinomio CRC-32
 
+// Referencia: A simple example: CRC32 calculation – The LXP32 Processor. (s. f.). https://lxp32.github.io/docs/a-simple-example-crc32-calculation/
+
 // Tabla CRC-32 para cálculos rápidos
 func MakeCrcTable() [256]uint32 {
 	var table [256]uint32
