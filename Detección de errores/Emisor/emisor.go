@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 const poly uint32 = 0xEDB88320 // Polinomio CRC-32
@@ -27,12 +28,15 @@ func MakeCrcTable() [256]uint32 {
 
 // CRC-32 de una cadena de bits
 func Crc32Encode(data string) uint32 {
+	startTime := time.Now()
 	table := MakeCrcTable()
+	endTime := time.Now()
 	crc := uint32(0xFFFFFFFF)
 	for i := 0; i < len(data); i++ {
 		byteVal := data[i]
 		crc = table[(crc^uint32(byteVal))&0xFF] ^ (crc >> 8)
 	}
+	fmt.Printf("Tiempo de ejecución de MakeCrcTable: %v\n", endTime.Sub(startTime))
 	return crc ^ 0xFFFFFFFF
 }
 

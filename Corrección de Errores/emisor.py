@@ -1,3 +1,4 @@
+import time
 def hamming(message, m, n):
     """
     Función hamming(m, n) que recibe un mensaje de m bits y añade n bits de paridad
@@ -52,6 +53,10 @@ if __name__ == "__main__":
     while 2**r < m + r + 1:
         r += 1
 
+    start_time = time.time()  
     # Calculamos los bits de paridad
     hamming = hamming(message, m, r)
+    end_time = time.time()  
+
     print("\nMensaje con bits de paridad: ", hamming)
+    print("Tiempo de ejecución: {:.6f} segundos".format(end_time - start_time)) 
