@@ -30,11 +30,3 @@ Para utilizar las implementaciones de los algoritmos, se debe navegar a la subca
 ## Requisitos
 
 Para ejecutar los scripts de este proyecto, necesitará tener instalados Python 3 y Go en su sistema. Las instrucciones específicas de ejecución se encuentran en los `README` de las subcarpetas correspondientes.
-
-## Contribuciones
-
-Este proyecto es abierto a contribuciones. Si desea mejorar las implementaciones existentes o agregar nuevas funcionalidades, siéntase libre de hacer un fork del repositorio y enviar sus pull requests.
-
-## Licencia
-
-Este proyecto está licenciado bajo [incluir tipo de licencia aquí], lo que permite su uso, modificación y distribución bajo ciertas condiciones.
