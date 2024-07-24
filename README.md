@@ -3,6 +3,8 @@
 - Mark Albrand - 21004
 - Jimena Hernández - 21199
 
+[Documento Pdf](https://github.com/markalbrand56/Redes-Laboratorio-2/blob/main/Laboratorio%202%20-%20Esquemas%20de%20detecci%C3%B3n%20y%20correcci%C3%B3n.pdf)
+
 Este proyecto incluye implementaciones de dos algoritmos fundamentales en la teoría de la comunicación y la informática: el algoritmo de Hamming para la corrección de errores y el algoritmo CRC-32 para la detección de errores. Ambos algoritmos son esenciales para garantizar la integridad de los datos en la transmisión y el almacenamiento de información.
 
 ## Estructura del Proyecto
