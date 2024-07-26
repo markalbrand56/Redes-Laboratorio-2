@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package crc
 
 const poly uint32 = 0xEDB88320 // Polinomio CRC-32
 
@@ -34,15 +30,4 @@ func Crc32Encode(data string) uint32 {
 		crc = table[(crc^uint32(byteVal))&0xFF] ^ (crc >> 8)
 	}
 	return crc ^ 0xFFFFFFFF
-}
-
-func main() {
-	var message string
-	fmt.Println("Ingrese un mensaje en binario:")
-	fmt.Scanln(&message)
-
-	crc := Crc32Encode(message)
-	crcChecksum := fmt.Sprintf("%032b", crc)
-	encodedMessage := message + crcChecksum
-	fmt.Printf("Mensaje codificado con CRC-32: %s\n", encodedMessage)
 }
