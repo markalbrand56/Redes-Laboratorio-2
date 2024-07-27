@@ -51,11 +51,17 @@ func handleConnection(conn net.Conn) {
 		fmt.Println("Error al leer el mensaje:", err)
 		return
 	}
-	message = message[:len(message)-1] // Elimina el salto de línea
+	message = message[:len(message)-1]
+	fmt.Printf("-- Capa de Transmisión --\n")
 	fmt.Printf("Mensaje recibido: %s\n", message)
-	decodedMessage := HammingDecode(message) //Capa de enlace
+
+	fmt.Printf("\n-- Capa de Enlace --\n")
+	decodedMessage := HammingDecode(message)
+
+	fmt.Printf("-- Capa de presentación --\n")
 	fmt.Printf("Mensaje decodificado: %s\n", decodedMessage)
-	//decode in ascii
+
+	fmt.Printf("\n-- Capa de Aplicación --\n")
 	decodedMessage = binaryToASCII(decodedMessage)
 	fmt.Printf("Mensaje decodificado en ASCII: %s\n", decodedMessage)
 }

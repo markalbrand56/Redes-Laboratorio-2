@@ -85,10 +85,12 @@ def aplicacion_mostrar_mensaje(mensaje):
 
 # Capa de Transmisión
 def iniciar_cliente(host, port, mensaje):
+    print("\n--- Capa de Transmisión ---")
     mensaje = mensaje + "\n"
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((host, port))
         s.sendall(mensaje.encode('utf-8'))
+        print("Mensaje enviado: ", mensaje)
 
 def iniciar_servidor(host, port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
