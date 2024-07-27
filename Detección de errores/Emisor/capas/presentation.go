@@ -11,6 +11,8 @@ func EncodeString(message string) string {
 	for _, char := range message {
 		ascii := int(char)
 		binary := strconv.FormatInt(int64(ascii), 2)
+		binary = "00000000"[len(binary):] + binary // Rellenar con ceros a la izquierda
+
 		binaryMessage += binary
 	}
 

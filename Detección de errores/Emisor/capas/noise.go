@@ -1,11 +1,14 @@
 package capas
 
-import "math/rand/v2"
-
-// función que reciba un mensaje (string) comprendido de solo 0s y 1s y devuelva el mensaje con ruido en base a una probabilidad p
+import (
+	"fmt"
+	"math/rand/v2"
+)
 
 const p = 0.01 // 1/100 de probabilidad de que un bit cambie
 
+// Capa de ruido: Agregar ruido al mensaje
+// Cambia aleatoriamente algunos bits del mensaje, en función de la probabilidad p
 func AddNoise(message string) string {
 	noisyMessage := ""
 	for _, bit := range message {
@@ -15,6 +18,7 @@ func AddNoise(message string) string {
 			} else {
 				noisyMessage += "0"
 			}
+			fmt.Println("Ruido aplicado")
 		} else {
 			noisyMessage += string(bit)
 		}

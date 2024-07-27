@@ -10,11 +10,11 @@ func main() {
 	fmt.Println("Ingrese un mensaje en binario:")
 	fmt.Scanln(&message)
 
-	encodedMessage := capas.EncodeMessage(message)
-
-	fmt.Printf("Mensaje codificado con CRC-32: %s\n", encodedMessage)
+	encodedMessage := capas.EncodeString(message)        // Codificar el mensaje a su representación en (ascii binario)
+	hashedMessage := capas.EncodeMessage(encodedMessage) // Codificar el mensaje con CRC-32
+	hashedMessage = capas.AddNoise(hashedMessage)        // Agregar ruido al mensaje
 
 	server := capas.NewServer("localhost", 8080)
 
-	server.Send(encodedMessage)
+	server.Send(hashedMessage)
 }
