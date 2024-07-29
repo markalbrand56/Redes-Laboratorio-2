@@ -111,6 +111,6 @@ def iniciar_servidor(host, port):
 if __name__ == "__main__":
     while True:
         enlace = capa_enlace(capa_presentacion(capa_aplicacion()))
-        mensaje_con_ruido = ruido_aplicar(enlace, 0.01)
+        mensaje_con_ruido = ruido_aplicar(enlace, 0.001)
         print("Mensaje con ruido: ", mensaje_con_ruido)
         iniciar_cliente('127.0.0.1', 65432, mensaje_con_ruido)
